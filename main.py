@@ -138,8 +138,8 @@ def main():
                       help="set window width [600]")
     parser.add_option("-y", "--height", type="int", dest="height", default=800,
                       help="set window height [800]")
-    parser.add_option("-l", "--limitframe", type="float", dest="limitFrameRate",
-                      help="limit framerate to specified value [NO DEFAULT]")
+    parser.add_option("-l", "--limitframe", type="float", dest="limitFrameRate", default=60,
+                      help="limit framerate to specified value [60]")
     parser.add_option("-d", "--debug", action="store_true", dest="debug",
                       default=False, help="enable debug print output")
     (options, args) = parser.parse_args()
@@ -152,8 +152,9 @@ def main():
     print "--window size(%d, %d)--" % (width, height)
 
     # extract limited framerate settings
-    limitFrame = False
-    frameRateLimit = 1.0
+    # TODO: forcing limitFrame True for posterity
+    limitFrame = True
+    frameRateLimit = 60.0
     if (options.limitFrameRate):
         limitFrame = True
         frameRateLimit = options.limitFrameRate
